@@ -33,7 +33,7 @@ ex) int i = 0;
 # 1-1 정수형 자료형 
 :char(1Byte), short(2Byte), int(4Byte), long(4Byte), long long(8Byte) 등
 
-```
+```cpp
 unsigned char c = 0;
 ```
 > 양(unsigned)의 정수형의 1byte 자료 
@@ -42,7 +42,7 @@ c = 0; (c에 0의 값을 넣어줘/등호X,대입)
 c = 256; (11111111(255)+1==100000000이지만, 자료형에의해 결과값 00000000(0))
 c = -1; 
 
-```
+```cpp
 char c1 = 0;
 signed char c1 = 0; 
 ```
@@ -277,7 +277,7 @@ int b = a<10 ? a : 10;
 - 반전,not(~) : 0과 1을 반전, 0은 1로, 1은 0으로.
 
 ex)
-```
+```cpp
 #define HUNGRY  1
 #define THRISTY 2
 #define TIRED   4 
@@ -291,7 +291,7 @@ iStatus |= HUNGRY;  0000 0001
 iStatus |= THIRSTY; 0000 0011
 
 ex)	 상태값 체크
-```
+```cpp
 if (iStatus & THIRSTY)
 {
 
@@ -315,7 +315,7 @@ ex) iStatus &= ~ THIRSTY;
 ex) 16진수 바꾸기!
 
 10진수
-```
+```cpp
 #define HUNGRY  1
 #define THRISTY 2
 #define TIRED   4 
@@ -323,7 +323,7 @@ ex) 16진수 바꾸기!
 #define COLD    16
 ```
 16진수로 바꾸기
-```
+```cpp
 #define HUNGRY  0*1
 #define THRISTY 0*2
 #define TIRED   0*4
@@ -343,7 +343,7 @@ ex) 16진수 바꾸기!
 ## 2-8. 쉬프트연산자
 #### <<,>> 방향대로 n칸을 밀어냄
 ex)
-```
+```cpp
 unsigned char byte = 1;
 byte <<= 1;
 ```
@@ -361,7 +361,7 @@ byte <<= 1;
 > 나머지가 생기는 경우 밀려서 소실.
 
 ex) 
-```
+```cpp
 0000 0011 (3)
 >>1 적용
 0000 0001 (1)
@@ -372,49 +372,49 @@ ex)
 # 3. if/else 구문
 
 ex) 
-```
+```cpp
 data = 0;
 if (0&&200)
 {
-data = 100;
+	data = 100;
 }
 ```
 > ()안이 참이라면 {}실행
 > (0&&200)은 거짓이기때문에 data = 0
 
 ex)  if/else
-```
+```cpp
 if (data == 100)
 {
-//if 가 참인경우 수행
+	//if 가 참인경우 수행
 }
 ```
 > data 는 100이 아니기때문에 {}안의 내용 실행되지 않음
 
-```
+```cpp
 else
 {
-//if가 거짓인경우 수행
+	//if가 거짓인경우 수행
 }
 ```
 
 ex) if /elseif/else
-```
+```cpp
 if()
 {
-if 가 참인경우 수행
+	//if 가 참인경우 수행
 }
 else if()
 {
-if가 거짓인경우, 해당 else if 가 참인 경우 수행
+	//if가 거짓인경우, 해당 else if 가 참인 경우 수행
 }
 else if()
 {
-if 와 첫번째 else if 가 모두 거짓일 경우, 해당 else if가 참인경우 수행
+	//if 와 첫번째 else if 가 모두 거짓일 경우, 해당 else if가 참인경우 수행
 }
 else
 {
-위 조건이 모두 거짓일때 수행
+	//위 조건이 모두 거짓일때 수행
 }
 ```
 > else if 갯수는 무한대로 적용 가능 
@@ -427,17 +427,16 @@ else
 # 4. switch 구문
 
 ex) if/else 구문과 비교
-```
-switch(10)					  int iTest = 10;
-{									 if (iTest == 10)
-	case 10:					 {
-		break;					}
-	case 20:					 else if(iTest ==20)
-		break;					{
-									  }
-	default:					 else
-		break;					{
-}									 }
+```cpp
+switch(10) // int iTest = 10;
+{
+	case 10: // if (iTest == 10)
+		break; // { }
+	case 20: // else if(iTest ==20)
+		break; // { }
+	default: // else
+		break; // { }
+}
 ```
 > switch(상수, 또는 변수)
 > 밑에 case와 일치하는 부분 실행
@@ -447,7 +446,7 @@ switch(10)					  int iTest = 10;
 > 반면 switch case 의 경우, case별로 정리하기때문에 가독성이 조금 더 좋음.
 
 ex)
-```
+```cpp
 int iTest = 10;
 switch (iTest)
 {
@@ -463,7 +462,7 @@ switch (iTest)
 ```
 > break 생략 시, break 걸린곳 까지 작동
 > 위와 같이 의도적으로 생략하기도 함.
-```
+```cpp
 if(iTset == 10 || iTest = 20 || iTest ==30)
 {
 }
@@ -482,11 +481,11 @@ else
 > 내가 지정한 구문을 특정 숫자로 치환해줌.
 > 장점 : 가독성, 유지보수
 ex) 
-```
+```cpp
 # define HUNGRY 1
 ```
 > HUNGRY 를 1로 치환해줌(우선하여 치환)
-```
+```cpp
 int iStatus = HUNGRY
 ```
 > int iStatus = 1 로 변환 된 후 컴파일 시작
@@ -514,10 +513,10 @@ int iStatus = HUNGRY
 # 7. 함수(Funtion, 기능)
 
 ex) data = 10 + 20; 를 함수로 만들기 
-```
+```cpp
 int Add(int left, int right)
 {
-int left + right;
+	int left + right;
 }
 data = Add(10,20);
 ```
